@@ -7,7 +7,7 @@ function main
     popsize = 102;
     param = 0:0.1:1;
     runTime = 20;
-    
+            fileID = fopen('result.txt','w');
     for prm = param
         result = zeros(3,runTime);
         for runtime = 1:runTime
@@ -21,7 +21,9 @@ function main
             result(3,runtime) = mean(modular);
 
         end
-        disp(prm);
-        disp(result);
+        fprintf(fileID,'%6s\r\n',prm);
+        fprintf(fileID,'%12s\r\n',result);
     end
+            fclose( fileID);
+
 end
